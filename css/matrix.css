@@ -1,13 +1,34 @@
-body {
-  background-color: #000;
-  color: #00ff9f;
-  font-family: "JetBrains Mono", monospace;
+/* ----- Fix: ensure main content sits above floating icons ----- */
+
+/* Make the page content be on top */
+.md-main, .md-content, .md-typeset, .md-page, .md-primary-content {
+  position: relative !important;
+  z-index: 9999 !important;    /* content above almost everything */
 }
-h1,h2,h3 { color:#00ff9f; text-shadow:0 0 12px #00ff9f; }
-a { color:#00ff9f; }
-.md-typeset code, .md-typeset pre {
-  background-color: rgba(0,30,0,0.85);
-  border: 1px solid #00ff9f33;
-  box-shadow: 0 0 12px #00ff9f20;
-  color: #00ff9f;
+
+/* Make site chrome (nav/header/footer) sit behind content if overlapping */
+.md-header, .md-nav, .md-footer, .md-top, .md-sidebar--secondary, .md-sidebar {
+  z-index: 10 !important;
+}
+
+/* If there are floating social / action buttons, reduce their stacking and disable clicks */
+.floating, .floating-button, .social, .md-badge, .md-toolbar, .md-floating, .social-icons, .hero__actions {
+  z-index: 5 !important;
+  pointer-events: auto; /* let clicks still work if needed; change to 'none' to disable */
+}
+
+/* Ensure images/SVGs inside posts don't overflow and cover the viewport */
+.md-typeset img, .md-typeset svg {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+  position: relative !important;
+  z-index: 10000 !important;
+}
+
+/* If any element is absolutely huge and covering the screen, cap its max size */
+.md-typeset > * {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
 }
