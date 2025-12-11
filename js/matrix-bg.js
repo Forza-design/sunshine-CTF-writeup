@@ -23,4 +23,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-https://Forza-design.github.io/sunshine-CTF-writeup/
+
