@@ -4,22 +4,35 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: write    # allow pushing commits (gh-pages branch)
+  pages: write       # allow publishing to GitHub Pages
+  id-token: write    # sometimes required for certain actions
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with: { python-version: "3.11" }
-      - name: Install deps
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install mkdocs-material
+
       - name: Build site
         run: mkdocs build
-      - name: Deploy
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
-
+          destination_branch: gh-pages
