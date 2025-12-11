@@ -9,9 +9,10 @@ nav:
   - Home: index.md
   - Projects: projects.md
   - Writeups:
-    - Overview: writeups/index.md
-    - Sunshine CTF: writeups/sunshine-ctf.md
+      - Overview: writeups/index.md
+      - Sunshine CTF: writeups/sunshine-ctf.md
   - About: about.md
+
 
 plugins:
   - search
