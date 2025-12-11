@@ -1,34 +1,53 @@
-/* ----- Fix: ensure main content sits above floating icons ----- */
+/* css/matrix.css - keep matrix canvas behind content and readable */
 
-/* Make the page content be on top */
+/* Ensure canvas sits behind everything */
+#matrix-bg-canvas {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  opacity: 0.12;
+}
+
+/* Keep main content above the canvas */
 .md-main, .md-content, .md-typeset, .md-page, .md-primary-content {
   position: relative !important;
-  z-index: 9999 !important;    /* content above almost everything */
+  z-index: 1 !important;
+  background: transparent !important;
 }
 
-/* Make site chrome (nav/header/footer) sit behind content if overlapping */
-.md-header, .md-nav, .md-footer, .md-top, .md-sidebar--secondary, .md-sidebar {
-  z-index: 10 !important;
+/* Ensure code blocks and images don't get hidden or overflow */
+.md-typeset pre, .md-typeset code {
+  background-color: rgba(0, 20, 0, 0.85) !important;
+  border: 1px solid #003300 !important;
+  color: #00ff9f !important;
 }
 
-/* If there are floating social / action buttons, reduce their stacking and disable clicks */
-.floating, .floating-button, .social, .md-badge, .md-toolbar, .md-floating, .social-icons, .hero__actions {
-  z-index: 5 !important;
-  pointer-events: auto; /* let clicks still work if needed; change to 'none' to disable */
-}
-
-/* Ensure images/SVGs inside posts don't overflow and cover the viewport */
+/* Make images and SVGs responsive so they don't overflow */
 .md-typeset img, .md-typeset svg {
   max-width: 100% !important;
   height: auto !important;
   display: block;
-  position: relative !important;
-  z-index: 10000 !important;
 }
 
-/* If any element is absolutely huge and covering the screen, cap its max size */
-.md-typeset > * {
-  max-width: 100% !important;
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
+/* Hide animation on small screens for performance */
+@media (max-width: 640px) {
+  #matrix-bg-canvas { display: none !important; }
+}
+
+/* Optional: small toggle button style (if you add the toggle) */
+.matrix-toggle-btn {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 9999;
+  background: rgba(0, 20, 0, 0.85);
+  color: #00ff9f;
+  border: 1px solid #00ff9f;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: monospace;
 }
