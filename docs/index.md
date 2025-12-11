@@ -1,7 +1,6 @@
-# Hi — I'm Ram 👋
+# Writeups
 
-Welcome to my Matrix-themed portfolio and CTF writeups.
+Welcome to the Writeups section.  
+Here you will find clean, simple pages for each CTF or project.
 
-- [Projects](projects.md)
-- [Sunshine CTF writeups](writeups/sunshine-ctf.md)
-- [About](about.md)
+- [Sunshine CTF Writeup](sunshine-ctf.md)
