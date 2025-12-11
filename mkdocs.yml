@@ -1,7 +1,17 @@
+site_name: "Ram Naik — Projects & CTF Writeups"
+site_description: "CTF writeups and projects"
+site_author: "Ram Naik"
+
+theme:
+  name: material
+
 nav:
   - Home: index.md
   - Projects: projects.md
   - Writeups:
-      - Overview: writeups/index.md
-      - Sunshine CTF: writeups/sunshine-ctf.md
+    - Overview: writeups/index.md
+    - Sunshine CTF: writeups/sunshine-ctf.md
   - About: about.md
+
+plugins:
+  - search
