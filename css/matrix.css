@@ -1,0 +1,13 @@
+body {
+  background-color: #000;
+  color: #00ff9f;
+  font-family: "JetBrains Mono", monospace;
+}
+h1,h2,h3 { color:#00ff9f; text-shadow:0 0 12px #00ff9f; }
+a { color:#00ff9f; }
+.md-typeset code, .md-typeset pre {
+  background-color: rgba(0,30,0,0.85);
+  border: 1px solid #00ff9f33;
+  box-shadow: 0 0 12px #00ff9f20;
+  color: #00ff9f;
+}
